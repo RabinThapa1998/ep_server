@@ -11,8 +11,7 @@ const config = {
     port: process.env.APP_PORT || 8000,
     isDev: process.env.NODE_ENV === "development",
     isProd: process.env.NODE_ENV === "production",
-    mongoUri:
-      process.env.MONGO_URI || "mongodb://localhost:27017/dashboard-test",
+    mongoUri: process.env.MONGO_URI || "mongodb://localhost:27017/flutter-ep",
     jwtSecret:
       process.env.JWT_SECRET || "LISTliStTT@)&&#(#*-Li^&*@#+SIAWMZdsESDdD",
   },

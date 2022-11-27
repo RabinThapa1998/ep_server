@@ -1,10 +1,10 @@
 import { Router } from "express";
 import { BadRequestError } from "../../../common/errors/bad-request-error";
 
-import { indexContestantRouter } from "./contestents";
+import { indexSetRouter } from "./sets";
 
 const router = Router();
 
-router.use("/contestants", indexContestantRouter);
+router.use("/sets", indexSetRouter);
 
 export { router as indexDashboardRouter };
