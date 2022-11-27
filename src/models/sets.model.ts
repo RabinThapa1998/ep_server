@@ -29,6 +29,10 @@ const setsSchema = new Schema<setsDoc>(
       type: String,
       required: true,
     },
+    // questions: {
+    //   type: [Schema.Types.ObjectId],
+    //   required: true,
+    // },
     active: {
       type: Boolean,
       default: true,
