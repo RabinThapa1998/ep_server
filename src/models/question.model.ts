@@ -9,22 +9,24 @@ import mongoose, {
 
 export interface questionAttrs {
   question: string;
-  answers: {
-    answer: string;
-    id: string;
-    correct: boolean;
+  options: {
+    option: string;
+    index: number;
   }[];
+  correct: number;
   sets: ObjectId;
+  desc: string;
 }
 
 export interface questionDoc extends Document, questionAttrs {
   question: string;
-  answers: {
-    answer: string;
-    id: string;
-    correct: boolean;
+  options: {
+    index: number;
+    option: string;
   }[];
+  correct: number;
   sets: ObjectId;
+  desc: string;
   active: boolean;
   createdAt: Date;
   updatedAt: Date;
@@ -40,30 +42,42 @@ const questionSchema = new Schema<questionDoc>(
       type: String,
       required: true,
     },
-    answers: {
+    options: {
       type: [
         {
-          answer: {
+          option: {
             type: String,
+
             required: true,
           },
-          id: {
-            type: String,
-            required: true,
-          },
-          correct: {
-            type: Boolean,
+          index: {
+            type: Number,
             required: true,
           },
         },
       ],
       required: true,
     },
+    correct: {
+      type: Number,
+      required: true,
+    },
+
+    sets: {
+      type: Schema.Types.ObjectId,
+      ref: "Sets",
+      required: true,
+    },
+    desc: {
+      type: String,
+      required: false,
+    },
     active: {
       type: Boolean,
       default: true,
     },
   },
+
   {
     toJSON: {
       transform(doc, ret) {
