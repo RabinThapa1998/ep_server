@@ -10,11 +10,11 @@ const validateFields = [
     .not()
     .isEmpty()
     .withMessage("question field is required"),
-  // check("options")
-  //   .trim()
-  //   .not()
-  //   .isEmpty()
-  //   .withMessage("options field is required"),
+  check("options")
+    .isArray()
+    .withMessage("Options is not an array")
+    .notEmpty()
+    .withMessage("options field is empty"),
   check("sets").trim().not().isEmpty().withMessage("sets field is required"),
   check("correct")
     .trim()
