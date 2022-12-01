@@ -7,7 +7,7 @@ const createQuestion = async (
   res: Response,
   next: NextFunction
 ) => {
-  const { question, options, sets, correct, desc } = req.body;
+  const { question, options, sets, correct, description } = req.body;
   console.log("🚀 ~ file: create.ts:11 ~ options", options);
   try {
     const _question = await Question.findOne({ question });
@@ -19,7 +19,7 @@ const createQuestion = async (
       options,
       sets,
       correct,
-      desc,
+      description,
     }).save();
 
     res.status(200).json({

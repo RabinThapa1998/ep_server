@@ -15,7 +15,7 @@ export interface questionAttrs {
   }[];
   correct: number;
   sets: ObjectId;
-  desc: string;
+  description?: string;
 }
 
 export interface questionDoc extends Document, questionAttrs {
@@ -26,7 +26,7 @@ export interface questionDoc extends Document, questionAttrs {
   }[];
   correct: number;
   sets: ObjectId;
-  desc: string;
+  description: string;
   active: boolean;
   createdAt: Date;
   updatedAt: Date;
@@ -68,9 +68,10 @@ const questionSchema = new Schema<questionDoc>(
       ref: "Sets",
       required: true,
     },
-    desc: {
+    description: {
       type: String,
       required: false,
+      default: "",
     },
     active: {
       type: Boolean,
