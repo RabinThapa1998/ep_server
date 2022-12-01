@@ -9,13 +9,13 @@ import mongoose, {
 
 export interface pdfAttrs {
   title?: string;
-  desc?: string;
+  description?: string;
   url: string;
 }
 
 export interface pdfDoc extends Document, pdfAttrs {
   title: string;
-  desc: string;
+  description: string;
   url: string;
   active: boolean;
   createdAt: Date;
@@ -33,7 +33,7 @@ const pdfSchema = new Schema<pdfDoc>(
       required: false,
       default: "",
     },
-    desc: {
+    description: {
       type: String,
       required: false,
       default: "",

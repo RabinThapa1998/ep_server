@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { BadReqError } from "../../../../common/errors/bad-req-error";
+import { Pdfs } from "../../../../models/pdf.model";
 import cloudinary from "../../../../utils/cloudinary";
 
 const createCommon = async (
@@ -8,7 +9,7 @@ const createCommon = async (
   next: NextFunction
 ) => {
   try {
-    const { title, desc } = req.body;
+    const { title, description } = req.body;
     const pdf = req.file;
     if (!req.file) throw new BadReqError("File is required");
     const result = await cloudinary.uploader.upload(req.file.path, {
@@ -16,7 +17,14 @@ const createCommon = async (
       folder: "flutter_ep",
       pages: true,
     });
-    return res.status(200).json(result);
+
+    const newPdfs = await Pdfs.build({
+      title,
+      description,
+      url: result.secure_url,
+    }).save();
+
+    return res.status(200).json(newPdfs);
   } catch (error: any) {
     throw new BadReqError(error.message || "Something went wrong");
   }
