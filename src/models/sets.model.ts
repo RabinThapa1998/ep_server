@@ -9,6 +9,7 @@ import mongoose, {
 
 export interface setsAttrs {
   name: string;
+  questions?: ObjectId[];
 }
 
 export interface setsDoc extends Document, setsAttrs {
@@ -29,10 +30,11 @@ const setsSchema = new Schema<setsDoc>(
       type: String,
       required: true,
     },
-    // questions: {
-    //   type: [Schema.Types.ObjectId],
-    //   required: true,
-    // },
+    questions: {
+      type: [Schema.Types.ObjectId],
+      required: false,
+      default: [],
+    },
     active: {
       type: Boolean,
       default: true,
