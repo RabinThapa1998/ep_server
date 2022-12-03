@@ -4,6 +4,7 @@ import { Sets } from "./models/sets.model";
 import { Pdfs } from "./models/pdf.model";
 import config from "./config";
 import { pdfs, questions, sets } from "./data";
+import colors from "colors";
 
 const connectDB = async () => {
   await mongoose.connect(config.app.mongoUri, {
@@ -27,7 +28,11 @@ const importData = async () => {
       return { ...set, questions: [createdQuestions[0]._id] };
     });
     const createdSets = await Sets.insertMany(sampleSets);
-    console.log("Data Imported");
+    console.log(
+      colors.green(
+        "********************************Data Imported!!***********************************"
+      )
+    );
     process.exit();
   } catch (error) {
     console.error(`${error}`);
@@ -40,7 +45,11 @@ const deleteData = async () => {
     await Question.deleteMany({});
     await Sets.deleteMany({});
     await Pdfs.deleteMany({});
-    console.log("Data Destroyed");
+    console.log(
+      colors.red(
+        "************************************Data Destroyed!!************************************"
+      )
+    );
     process.exit();
   } catch (error) {
     console.error(`${error}`);
