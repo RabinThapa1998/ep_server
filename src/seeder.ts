@@ -23,9 +23,10 @@ const importData = async () => {
     await Pdfs.deleteMany({});
     const createdPdfs = await Pdfs.insertMany(pdfs);
     const createdQuestions = await Question.insertMany(questions);
+    const questionsId = createdQuestions.map((question) => question._id);
 
     const sampleSets = sets.map((set, index) => {
-      return { ...set, questions: [createdQuestions[0]._id] };
+      return { ...set, questions: questionsId };
     });
     const createdSets = await Sets.insertMany(sampleSets);
     console.log(

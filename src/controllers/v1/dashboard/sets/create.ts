@@ -3,7 +3,7 @@ import { BadRequestError } from "../../../../common/errors/bad-request-error";
 import { Sets } from "../../../../models/sets.model";
 
 const createSets = async (req: Request, res: Response, next: NextFunction) => {
-  const { name } = req.body;
+  const { name, description } = req.body;
   try {
     const _sets = await Sets.findOne({ name: name });
     if (_sets) {
@@ -11,6 +11,7 @@ const createSets = async (req: Request, res: Response, next: NextFunction) => {
     }
     const newSets = await Sets.build({
       name,
+      description,
     }).save();
 
     res.status(200).json({

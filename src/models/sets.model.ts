@@ -10,11 +10,13 @@ import mongoose, {
 export interface setsAttrs {
   name: string;
   questions?: ObjectId[];
+  description?: string;
 }
 
 export interface setsDoc extends Document, setsAttrs {
   name: string;
   questions: ObjectId[];
+  description: string;
   active: boolean;
   createdAt: Date;
   updatedAt: Date;
@@ -35,6 +37,10 @@ const setsSchema = new Schema<setsDoc>(
       required: false,
       default: [],
       ref: "Question",
+    },
+    description: {
+      type: String,
+      required: false,
     },
     active: {
       type: Boolean,
