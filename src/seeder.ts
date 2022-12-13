@@ -30,7 +30,7 @@ const importData = async () => {
     const createdSets = await Sets.insertMany(sampleSets);
     console.log(
       colors.green(
-        "********************************Data Imported!!***********************************"
+        "************************************Data Imported!!***********************************"
       )
     );
     process.exit();

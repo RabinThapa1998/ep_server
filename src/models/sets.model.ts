@@ -34,6 +34,7 @@ const setsSchema = new Schema<setsDoc>(
       type: [Schema.Types.ObjectId],
       required: false,
       default: [],
+      ref: "Question",
     },
     active: {
       type: Boolean,
