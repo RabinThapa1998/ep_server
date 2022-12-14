@@ -41,6 +41,7 @@ const setsSchema = new Schema<setsDoc>(
     description: {
       type: String,
       required: false,
+      default: "",
     },
     active: {
       type: Boolean,
