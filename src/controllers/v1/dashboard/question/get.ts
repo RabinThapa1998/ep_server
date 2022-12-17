@@ -8,7 +8,7 @@ const getQuestions = async (
   next: NextFunction
 ) => {
   try {
-    const questions = await Question.find({});
+    const questions = await Question.find({}).populate("category");
     res.status(200).json({
       data: questions,
     });

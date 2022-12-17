@@ -10,6 +10,10 @@ import mongoose, {
 interface ISubCategory {
   topic: string;
 }
+interface IReturnSubCategory {
+  topic: string;
+  _id: ObjectId;
+}
 
 export interface categoryAttrs {
   category: string;
@@ -18,7 +22,7 @@ export interface categoryAttrs {
 
 export interface categoryDoc extends Document, categoryAttrs {
   category: string;
-  sub_category: ISubCategory[];
+  sub_category: IReturnSubCategory[];
   active: boolean;
   createdAt: Date;
   updatedAt: Date;
