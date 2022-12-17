@@ -6,6 +6,7 @@ import mongoose, {
   model,
   ObjectId,
 } from "mongoose";
+import { Category } from "./category.model";
 
 enum category {
   Medical = "Medical",
@@ -86,10 +87,12 @@ const questionSchema = new Schema<questionDoc>(
     category: {
       type: Schema.Types.ObjectId,
       required: true,
+      ref: Category,
     },
     sub_category: {
       type: Schema.Types.ObjectId,
       required: true,
+      ref: Category,
     },
     active: {
       type: Boolean,
