@@ -7,40 +7,18 @@ import mongoose, {
   ObjectId,
 } from "mongoose";
 
-interface ICategory {
-  subject: string;
-  topic: {
-    name: string;
-  }[];
+interface ISubCategory {
+  topic: string;
 }
-[];
-const category: ICategory[] = [
-  {
-    subject: "Medical",
-    topic: [
-      { name: "biology" },
-      { name: "zoology" },
-      { name: "chemistry" },
-      { name: "maths" },
-    ],
-  },
-  {
-    subject: "Medical",
-    topic: [
-      { name: "physics" },
-      { name: "english" },
-      { name: "chemistry" },
-      { name: "maths" },
-    ],
-  },
-];
 
 export interface categoryAttrs {
-  category?: ICategory[];
+  category: string;
+  sub_category: ISubCategory[];
 }
 
 export interface categoryDoc extends Document, categoryAttrs {
-  category: ICategory[];
+  category: string;
+  sub_category: ISubCategory[];
   active: boolean;
   createdAt: Date;
   updatedAt: Date;
@@ -53,18 +31,16 @@ interface categoryModel extends Model<categoryAttrs> {
 const categorySchema = new Schema<categoryDoc>(
   {
     category: {
+      type: String,
+      required: true,
+    },
+    sub_category: {
       type: [
         {
-          subject: String,
-          topic: [
-            {
-              name: String,
-            },
-          ],
+          topic: String,
         },
       ],
-      default: category,
-      required: false,
+      required: true,
     },
 
     active: {
