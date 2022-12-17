@@ -7,6 +7,12 @@ import mongoose, {
   ObjectId,
 } from "mongoose";
 
+enum category {
+  Medical = "Medical",
+  Engineering = "Engineering",
+  Others = "Others",
+}
+
 export interface questionAttrs {
   question: string;
   options: {
@@ -16,6 +22,8 @@ export interface questionAttrs {
   correct: number;
   sets: ObjectId;
   description?: string;
+  category?: ObjectId;
+  sub_category?: ObjectId;
 }
 
 export interface questionDoc extends Document, questionAttrs {
@@ -27,6 +35,8 @@ export interface questionDoc extends Document, questionAttrs {
   correct: number;
   sets: ObjectId;
   description: string;
+  category?: ObjectId;
+  sub_category?: ObjectId;
   active: boolean;
   createdAt: Date;
   updatedAt: Date;
@@ -72,6 +82,14 @@ const questionSchema = new Schema<questionDoc>(
       type: String,
       required: false,
       default: "",
+    },
+    category: {
+      type: Schema.Types.ObjectId,
+      required: true,
+    },
+    sub_category: {
+      type: Schema.Types.ObjectId,
+      required: true,
     },
     active: {
       type: Boolean,
