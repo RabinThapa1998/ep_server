@@ -21,6 +21,7 @@ export interface questionAttrs {
     index: number;
   }[];
   correct: number;
+  selected?: number | string;
   sets: ObjectId;
   description?: string;
   category?: ObjectId;
@@ -34,6 +35,7 @@ export interface questionDoc extends Document, questionAttrs {
     option: string;
   }[];
   correct: number;
+  selected: number | string;
   sets: ObjectId;
   description: string;
   category?: ObjectId;
@@ -73,7 +75,11 @@ const questionSchema = new Schema<questionDoc>(
       type: Number,
       required: true,
     },
-
+    selected: {
+      type: Number || String,
+      default: "",
+      required: false,
+    },
     sets: {
       type: Schema.Types.ObjectId,
       ref: "Sets",

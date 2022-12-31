@@ -24,51 +24,51 @@ export const questions = [
     description: "This is the capital of India",
   },
   {
-    question: "What is the capital of India?",
+    question: "What is the capital of Nepal?",
     options: [
       {
-        option: "Delhi",
+        option: "Kathmandu",
         index: 0,
       },
       {
-        option: "Mumbai",
+        option: "Hetauda",
         index: 1,
       },
       {
-        option: "Kolkata",
+        option: "Biratnagar",
         index: 2,
       },
       {
-        option: "Chennai",
+        option: "Pokhara",
         index: 3,
       },
     ],
     correct: 0,
     sets: "5f9f1b0b0b1b9c2c1c8c0b1a",
-    description: "This is the capital of India",
+    description: "This is the capital of Nepal",
   },
   {
-    question: "What is the capital of India?",
+    question: "What is the capital of China?",
     options: [
       {
-        option: "Delhi",
+        option: "Beijing",
         index: 0,
       },
       {
-        option: "Mumbai",
+        option: "Shanghai",
         index: 1,
       },
       {
-        option: "Kolkata",
+        option: "Hong Kong",
         index: 2,
       },
       {
-        option: "Chennai",
+        option: " Guangzhou",
         index: 3,
       },
     ],
     correct: 0,
     sets: "5f9f1b0b0b1b9c2c1c8c0b1a",
-    description: "This is the capital of India",
+    description: "This is the capital of China",
   },
 ];
